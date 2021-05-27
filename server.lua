@@ -29,7 +29,7 @@ RegisterCommand("shotspot", function(source)
     else
         local check = false;
         for src, role in ipairs(notconfig.perms) do
-            local perms_check = IsRolePresent(user_id, role)
+            local perms_check = IsRolePresent(source, role)
             if(perms_check == true) then
                 check = true;
             end
@@ -77,3 +77,9 @@ function turnoff()
     Citizen.Wait(notconfig.wait_time_before_next_blip)
     on = false;
   end
+
+  AddEventHandler("playerDropped", function()
+    if active_leos[source] then
+        active_leos[source] = nil
+    end
+end)
