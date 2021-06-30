@@ -57,6 +57,7 @@ AddEventHandler("REDRUMDDIDNOTMAKETHIS_S", function(serverid, street1, street2, 
     if(on == true) then return end;
         on = true;
         Citizen.Wait(notconfig.shotspotter_timer)
+        Citizen.Wait(5)
         for _, player in ipairs(GetPlayers()) do
             player = tonumber(player)
             if active_leos[player] then
